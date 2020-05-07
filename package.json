@@ -1,13 +1,16 @@
 {
-  "name": "gatsby-typescript-tailwind",
+  "name": "rust-interop",
   "private": false,
   "description": "A gatsby starter kit using TypeScript and Tailwind CSS",
   "version": "0.1.247",
   "author": "Florentin Eckl <ecklf@icloud.com>",
   "dependencies": {
+    "gatsby-transformer-remark": "^2.8.7",
+    "lodash.shuffle": "^4.2.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-helmet": "5.2.1"
+    "react-helmet": "5.2.1",
+    "react-text-loop": "^2.3.0"
   },
   "devDependencies": {
     "@types/react": "16.9.34",

@@ -13,6 +13,14 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `libraries`,
+        path: `${__dirname}/content/libraries`,
+      },
+    },
+    `gatsby-transformer-remark`,
     "gatsby-plugin-postcss",
     {
       resolve: "gatsby-plugin-purgecss",

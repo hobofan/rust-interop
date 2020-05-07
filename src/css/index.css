@@ -3,3 +3,15 @@
 @tailwind components;
 
 @tailwind utilities;
+
+h1 { @apply text-2xl; }
+h2 { @apply text-xl; }
+
+h1:hover a:before, h2:hover a:before {
+ position:absolute;
+ left:-35px;
+ padding-right:10px;
+ content:'\2002\00a7\2002';
+}
+
+.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}
