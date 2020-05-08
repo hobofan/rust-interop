@@ -1,4 +1,5 @@
 module.exports = {
+  pathPrefix: `/rust-interop`,
   siteMetadata: {
     title: `Gatsby Typescript Tailwind`,
     description: `An example config of Gatsby + TypeScript + Tailwind CSS`,
