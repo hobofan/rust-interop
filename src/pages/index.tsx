@@ -62,6 +62,36 @@ function Index({}: Props): ReactElement {
           (e.g. "Python in Rust" for taking advantage of rich foreign
           ecosystems)
         </p>
+        <br />
+        <br />
+        <p className="text-xl">
+          This page aims to highlight deep integrations between Rust and a
+          specific foreign language. Luckily, even if those do not exist, we can
+          fall back to FFI or other polyglot technologies (e.g. WASM).
+          <br />
+          <br />
+          Some links for more generalized foreign language integrations: <br />-
+          <a
+            href="https://doc.rust-lang.org/nomicon/ffi.html"
+            className="underline"
+          >
+            Rustonomicon chapter about FFI
+          </a>
+          <br />-
+          <a
+            href="https://github.com/alexcrichton/rust-ffi-examples"
+            className="underline"
+          >
+            Examples for using FFI with many languages
+          </a>
+          <br />-
+          <a
+            href="https://rustwasm.github.io/docs/book/print.html"
+            className="underline"
+          >
+            Rust and Webassembly book
+          </a>
+        </p>
         <div className="py-4"></div>
         {allLangs.map((lang: String) => {
           return (
@@ -96,6 +126,11 @@ function Index({}: Props): ReactElement {
             </>
           )
         })}
+        <div className="text-center underline text-3xl my-8">
+          <a href="https://github.com/hobofan/rust-interop">
+            Missing a integration? Feel free to contribute!
+          </a>
+        </div>
       </div>
     </>
   )
