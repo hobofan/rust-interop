@@ -6,7 +6,7 @@
   </a>
 </p>
 <h1 align="center">
-Gatsby TypeScript Tailwind
+Gatsby TypeScript Tailwind.
 </h1>
 
 ## 🚀 Quick start
