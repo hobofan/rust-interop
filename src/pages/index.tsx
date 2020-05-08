@@ -160,7 +160,7 @@ type CardProps = {
 function LibraryCard(props: CardProps): ReactElement {
   const cratesUrl = () =>
     props.frontmatter.crate
-      ? `https://crates.io/crate/${props.frontmatter.crate}`
+      ? `https://crates.io/crates/${props.frontmatter.crate}`
       : null
   const mainUrl = () =>
     props.frontmatter.url || props.frontmatter.repo || cratesUrl()
