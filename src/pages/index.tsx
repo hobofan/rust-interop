@@ -22,6 +22,7 @@ function Index({}: Props): ReactElement {
               host_lang
               guest_lang
               description
+              requires_nightly
             }
           }
         }
@@ -35,6 +36,7 @@ function Index({}: Props): ReactElement {
 
   let allLangs = hostLangs.concat(guestLangs).filter(n => n !== "Rust")
   allLangs = [...new Set(allLangs)]
+  allLangs.sort()
   const guestLibs = guestLang =>
     libs.filter(n => n.frontmatter.guest_lang === guestLang)
   const hostLibs = hostLang =>
@@ -108,6 +110,7 @@ type CardProps = {
     guest_lang: String
     host_lang: String
     description: String
+    requires_nightly?: boolean
   }
 }
 
@@ -125,17 +128,25 @@ function LibraryCard(props: CardProps): ReactElement {
         <a href={mainUrl()} className="font-bold text-xl mb-2">
           {props.frontmatter.title}
         </a>
+        {props.frontmatter.requires_nightly ? (
+          <span className="inline-block bg-px-3 py-1 text-sm font-semibold bg-red-700 text-white mr-2 rounded-full px-2 mx-2">
+            Requires nightly
+          </span>
+        ) : null}
         <p className="mt-4 text-gray-700 text-base">
           {props.frontmatter.description}
         </p>
       </div>
-      <div className="px-6 py-4">
+      <div className="px-6 py-4 flex">
         <span className="inline-block bg-px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
           <a href={cratesUrl()}>
             <img
               src={`http://meritbadge.herokuapp.com/${props.frontmatter.crate}`}
             />
           </a>
+        </span>
+        <span className="inline-block bg-px-3 py-1 text-sm font-semibold mr-2 underline">
+          <a href={props.frontmatter.repo}>{"Repo"}</a>
         </span>
       </div>
     </div>
