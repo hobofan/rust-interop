@@ -86,6 +86,14 @@ function Index({}: Props): ReactElement {
           </a>
           <br />-
           <a
+            href="https://github.com/rust-lang/rust-bindgen"
+            className="underline"
+          >
+            bindgen crate to automatically generate Rust FFI bindings to C (and
+            some C++) libraries.
+          </a>
+          <br />-
+          <a
             href="https://rustwasm.github.io/docs/book/print.html"
             className="underline"
           >
