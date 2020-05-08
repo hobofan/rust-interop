@@ -10,8 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: enriikke/gatsby-gh-pages-action@296333de9726ebb92be57158b99f8d2d64a2e3d7
+      - uses: enriikke/gatsby-gh-pages-action@36d33a51b54e3c755430f190ad563f689667becc
         with:
           access-token: ${{ secrets.ACCESS_TOKEN }}
           gatsby-args: --prefix-paths
-          skip-publish: false
