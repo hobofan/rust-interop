@@ -5,5 +5,4 @@ repo: "https://github.com/dgrunwald/rust-cpython"
 host_lang: Rust
 guest_lang: Python
 description: "Rust bindings for the python interpreter."
-requires_nightly: true
 ---
