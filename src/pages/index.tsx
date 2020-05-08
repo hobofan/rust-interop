@@ -1,7 +1,9 @@
 import React, { ReactElement, useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import TextLoop from "react-text-loop"
-const shuffle = require("lodash.shuffle")
+import loadable from "@loadable/component"
+import shuffle from "lodash.shuffle"
+
+const TextTransition = loadable(() => import("react-text-transition"))
 
 interface Props {}
 
@@ -38,24 +40,12 @@ function Index({}: Props): ReactElement {
   const hostLibs = hostLang =>
     libs.filter(n => n.frontmatter.host_lang === hostLang)
 
-  const textLoopItems = () => {
-    return shuffle(libs).map(lib => {
-      const xiny = `${lib.frontmatter.guest_lang} in ${lib.frontmatter.host_lang}`
-      const xinyAnchor = xiny.toLowerCase().replace(/\ /gi, "-")
-      return (
-        <a href={`#${xinyAnchor}`}>
-          <span>{xiny}</span>
-        </a>
-      )
-    })
-  }
-
   return (
     <>
       <GithubCorner />
       <div className="container max-w-xl mx-auto mt-10 relative">
         <div className="text-center text-6xl font-bold my-8 mt-20">
-          <TextLoop>{textLoopItems()}</TextLoop>
+          <RotatingHeader libs={libs} />
         </div>
         <p className="text-xl">
           This page aims to give a comprehensive overview of the available
@@ -149,6 +139,29 @@ function LibraryCard(props: CardProps): ReactElement {
         </span>
       </div>
     </div>
+  )
+}
+
+function RotatingHeader({ libs }): ReactElement {
+  const TEXTS = shuffle(libs).map(lib => {
+    const xiny = `${lib.frontmatter.guest_lang} in ${lib.frontmatter.host_lang}`
+    const xinyAnchor = xiny.toLowerCase().replace(/\ /gi, "-")
+    return { text: xiny, anchor: xinyAnchor }
+  })
+
+  const [index, setIndex] = React.useState(0)
+
+  React.useEffect(() => {
+    const intervalId = setInterval(
+      () => setIndex(index => index + 1),
+      3000 // every 3 seconds
+    )
+  }, [])
+
+  return (
+    <a href={`#${TEXTS[index % TEXTS.length].anchor}`}>
+      <TextTransition text={TEXTS[index % TEXTS.length].text} />
+    </a>
   )
 }
 
