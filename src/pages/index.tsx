@@ -46,7 +46,7 @@ function Index({}: Props): ReactElement {
     <>
       <GithubCorner />
       <div className="container max-w-xl mx-auto mt-10 relative">
-        <div className="text-center text-6xl font-bold my-8 mt-20">
+        <div className="text-center text-3xl md:text-6xl font-bold my-8 mt-20">
           <RotatingHeader libs={libs} />
         </div>
         <p className="text-xl">
