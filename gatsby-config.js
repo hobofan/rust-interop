@@ -1,9 +1,8 @@
 module.exports = {
   pathPrefix: `/rust-interop`,
   siteMetadata: {
-    title: `Gatsby Typescript Tailwind`,
-    description: `An example config of Gatsby + TypeScript + Tailwind CSS`,
-    author: `@gatsbyjs`,
+    title: `Rust Interop`,
+    description: `Overview of foreign language interop option for the Rust programming language`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -36,8 +35,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `rust-interop`,
+        short_name: `rust-interop`,
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,

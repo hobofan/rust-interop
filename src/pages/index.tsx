@@ -1,4 +1,5 @@
 import React, { ReactElement, useState } from "react"
+import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 import loadable from "@loadable/component"
 import shuffle from "lodash.shuffle"
@@ -11,6 +12,12 @@ function Index({}: Props): ReactElement {
   const [isMenuOpen, setMenuOpen] = useState(false)
   const data = useStaticQuery(graphql`
     query {
+      site {
+        siteMetadata {
+          title
+          description
+        }
+      }
       allMarkdownRemark {
         edges {
           node {
@@ -44,6 +51,9 @@ function Index({}: Props): ReactElement {
 
   return (
     <>
+      <Helmet>
+        <title>{`${data.site.siteMetadata.title} - ${data.site.siteMetadata.description}`}</title>
+      </Helmet>
       <GithubCorner />
       <div className="container max-w-xl mx-auto mt-10 relative">
         <div className="text-center text-3xl md:text-6xl font-bold my-8 mt-20">
