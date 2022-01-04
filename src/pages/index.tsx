@@ -56,94 +56,100 @@ function Index({}: Props): ReactElement {
       </Helmet>
       <GithubCorner />
       <div className="container max-w-xl mx-auto mt-10 relative">
-        <div className="text-center text-3xl md:text-6xl font-bold my-8 mt-20">
-          <RotatingHeader libs={libs} />
+        <div className="mx-4">
+          <div className="text-center text-3xl md:text-6xl font-bold my-8 mt-20">
+            <RotatingHeader libs={libs} />
+          </div>
+          <p className="text-xl">
+            This page aims to give a comprehensive overview of the available
+            language interop (= interoperability) options for the Rust
+            programming language.
+          </p>
+          <br />
+          <p className="text-xl">
+            We want to highlight libraries that enable using:
+            <br />- <b>Rust as a guest language</b> (e.g. "Rust in Python" for
+            speeding up Python libraries)
+            <br />- <b>Using other guest languages from Rust</b>
+            (e.g. "Python in Rust" for taking advantage of rich foreign
+            ecosystems)
+          </p>
+          <br />
+          <br />
+          <p className="text-xl">
+            This page aims to highlight deep integrations between Rust and a
+            specific foreign language. Luckily, even if those do not exist, we
+            can fall back to FFI or other polyglot technologies (e.g. WASM).
+            <br />
+            <br />
+            Some links for more generalized foreign language integrations:{" "}
+            <br />-
+            <a
+              href="https://doc.rust-lang.org/nomicon/ffi.html"
+              className="underline"
+            >
+              Rustonomicon chapter about FFI
+            </a>
+            <br />-
+            <a
+              href="https://github.com/alexcrichton/rust-ffi-examples"
+              className="underline"
+            >
+              Examples for using FFI with many languages
+            </a>
+            <br />-
+            <a
+              href="https://github.com/rust-lang/rust-bindgen"
+              className="underline"
+            >
+              bindgen crate to automatically generate Rust FFI bindings to C
+              (and some C++) libraries.
+            </a>
+            <br />-
+            <a
+              href="https://rustwasm.github.io/docs/book/print.html"
+              className="underline"
+            >
+              Rust and Webassembly book
+            </a>
+          </p>
         </div>
-        <p className="text-xl">
-          This page aims to give a comprehensive overview of the available
-          language interop options for the Rust programming language.
-        </p>
-        <br />
-        <p className="text-xl">
-          We want to highlight libraries that enable using:
-          <br />- <b>Rust as a guest language</b> (e.g. "Rust in Python" for
-          speeding up Python libraries)
-          <br />- <b>Using other guest languages from Rust</b>
-          (e.g. "Python in Rust" for taking advantage of rich foreign
-          ecosystems)
-        </p>
-        <br />
-        <br />
-        <p className="text-xl">
-          This page aims to highlight deep integrations between Rust and a
-          specific foreign language. Luckily, even if those do not exist, we can
-          fall back to FFI or other polyglot technologies (e.g. WASM).
-          <br />
-          <br />
-          Some links for more generalized foreign language integrations: <br />-
-          <a
-            href="https://doc.rust-lang.org/nomicon/ffi.html"
-            className="underline"
-          >
-            Rustonomicon chapter about FFI
-          </a>
-          <br />-
-          <a
-            href="https://github.com/alexcrichton/rust-ffi-examples"
-            className="underline"
-          >
-            Examples for using FFI with many languages
-          </a>
-          <br />-
-          <a
-            href="https://github.com/rust-lang/rust-bindgen"
-            className="underline"
-          >
-            bindgen crate to automatically generate Rust FFI bindings to C (and
-            some C++) libraries.
-          </a>
-          <br />-
-          <a
-            href="https://rustwasm.github.io/docs/book/print.html"
-            className="underline"
-          >
-            Rust and Webassembly book
-          </a>
-        </p>
         <div className="py-4"></div>
-        {allLangs.map((lang: String) => {
-          return (
-            <>
-              <h1 id={lang.toLowerCase()}>
-                <a href={`#${lang.toLowerCase()}`}>{lang}</a>
-              </h1>
-              {guestLibs(lang).length === 0 ? null : (
-                <>
-                  <h2 id={`${lang.toLowerCase()}-in-rust`}>
-                    <a
-                      href={`#${lang.toLowerCase()}-in-rust`}
-                    >{`${lang} in Rust`}</a>
-                  </h2>
-                  {guestLibs(lang).map(lib => (
-                    <LibraryCard {...lib} />
-                  ))}
-                </>
-              )}
-              {hostLibs(lang).length === 0 ? null : (
-                <>
-                  <h2 id={`rust-in-${lang.toLowerCase()}`}>
-                    <a
-                      href={`#rust-in-${lang.toLowerCase()}`}
-                    >{`Rust in ${lang}`}</a>
-                  </h2>
-                  {hostLibs(lang).map(lib => (
-                    <LibraryCard {...lib} />
-                  ))}
-                </>
-              )}
-            </>
-          )
-        })}
+        <div className="mx-4">
+          {allLangs.map((lang: String) => {
+            return (
+              <>
+                <h1 id={lang.toLowerCase()}>
+                  <a href={`#${lang.toLowerCase()}`}>{lang}</a>
+                </h1>
+                {guestLibs(lang).length === 0 ? null : (
+                  <>
+                    <h2 id={`${lang.toLowerCase()}-in-rust`}>
+                      <a
+                        href={`#${lang.toLowerCase()}-in-rust`}
+                      >{`${lang} in Rust`}</a>
+                    </h2>
+                    {guestLibs(lang).map(lib => (
+                      <LibraryCard {...lib} />
+                    ))}
+                  </>
+                )}
+                {hostLibs(lang).length === 0 ? null : (
+                  <>
+                    <h2 id={`rust-in-${lang.toLowerCase()}`}>
+                      <a
+                        href={`#rust-in-${lang.toLowerCase()}`}
+                      >{`Rust in ${lang}`}</a>
+                    </h2>
+                    {hostLibs(lang).map(lib => (
+                      <LibraryCard {...lib} />
+                    ))}
+                  </>
+                )}
+              </>
+            )
+          })}
+        </div>
         <div className="text-center underline text-3xl my-8">
           <a href="https://github.com/hobofan/rust-interop">
             Missing a integration? Feel free to contribute!
