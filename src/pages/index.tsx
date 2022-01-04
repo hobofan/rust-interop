@@ -195,7 +195,7 @@ function LibraryCard(props: CardProps): ReactElement {
           <span className="inline-block bg-px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
             <a href={cratesUrl()}>
               <img
-                src={`http://meritbadge.herokuapp.com/${props.frontmatter.crate}`}
+                src={`https://img.shields.io/crates/v/${props.frontmatter.crate}.svg`}
               />
             </a>
           </span>
